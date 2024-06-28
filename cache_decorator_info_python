@@ -1,0 +1,19 @@
+The functools module provides a decorator, @cache, which can be used to cache the results of a function. This can be useful for speeding up functions that are called repeatedly with the same arguments.
+The @cache decorator takes an optional maxsize parameter, which specifies the maximum number of items to store in the cache. If the cache is full, the least recently used item will be evicted.
+If maxsize is not specified, the cache will grow indefinitely. This can be a problem if you are storing a large number of different calls in memory.
+Here is an example of how to use the @cache decorator:
+Python
+
+
+
+import functools
+
+@functools.cache(maxsize=128)
+def sum_of_squares(n):
+    return sum(i**2 for i in range(n))
+
+print(sum_of_squares(10))
+print(sum_of_squares(10))
+
+This code will cache the result of the sum_of_squares function for the first 128 times it is called. After that, the least recently used result will be evicted from the cache.
+The @cache decorator can be a useful tool for speeding up functions that are called repeatedly with the same arguments. However, it is important to be aware of the potential memory usage implications of using this decorator.
